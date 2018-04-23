@@ -88,7 +88,7 @@ for j in range(pages):
 
 		#go back
 		browser.back()
-		time.sleep(5)
+		#time.sleep(5)
 
 
 df.to_csv(path_or_buf = "~/Dropbox/ideas/lincoln-brigade/01-data/raw-brigades-data.csv", encoding = 'utf-8',index = False)
