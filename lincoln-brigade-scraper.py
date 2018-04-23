@@ -90,63 +90,6 @@ for j in range(pages):
 
 df.to_csv(path_or_buf = "~/Dropbox/ideas/lincoln-brigade/raw-brigades-data.csv", encoding = 'utf-8',index = False)
 
-
-#browser.execute_script("window.history.go(-1)")
-
-#get the link to click on for the person
-#person_link = browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td[1]/strong/a')
-#person_link_href = person_link[0].get_attribute('href')
-#print(person_link_href)
-
-#find name of person
-#name = browser.find_element_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td[1]')
-#print(name.text)
-
-#click on person
-#browser.get(person_link_href)
-#browser.implicitly_wait(10)
-
-#now get the bio
-#bio_element = browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[2]')
-#print(bio_element[0].text)
-
-#go back
-#browser.execute_script("window.history.go(-1)")
-
-#do the following for each page i
-#for i in range(73):
-
-	#grab relevant features from the data on the page
-#	locations = pd.Series(get_feature(cols[0]))
-#	dates = pd.Series(get_feature(cols[1]))
-#	subjects = pd.Series(get_feature(cols[2]))
-#	participants = pd.Series(get_feature(cols[3]))
-#	times = pd.Series(get_feature(cols[4]))
-#	descriptions = pd.Series(get_feature(cols[5]))
-#	urls = pd.Series(get_feature(cols[6]))
-
-	# store features in a temporary dataframe
-#	temp_df = pd.DataFrame({cols[0]: locations,
-#		cols[1]: dates,
-#		cols[2]: subjects,
-#		cols[3]: participants,
-#		cols[4]: times,
-#		cols[5]: descriptions,
-#		cols[6]: urls})
-
-	#append data from this page to dataframe
-#	df = df.append(temp_df)
-
-	#click to go to next page
-#	browser.find_element_by_xpath("//*[@id=\"blm-results\"]/div[1]/ul/li[4]").click()
-
-	#wait 10 seconds
-#	time.sleep(5)
-
 #close chrome browser
 browser.quit()
-
-#output data to csv
-#df.to_csv(path_or_buf = "~/Dropbox/policing_protest/BLM_scraper/BLM_raw_out.csv", encoding = 'utf-8')
-
 
