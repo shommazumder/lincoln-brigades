@@ -56,6 +56,8 @@ def get_bio(index):
 #scrape
 lincoln_base_url = "http://www.alba-valb.org/volunteers/browse/?b_start:int="
 lincoln_end_url = "&-C="
+
+#loop over pages
 for j in range(pages):
 	lincoln_url = lincoln_base_url + str(j*20) + lincoln_end_url
 	browser.get(lincoln_url)
@@ -64,6 +66,7 @@ for j in range(pages):
 	tot_row_count = len(browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/table/tbody/tr'))
 	num_rows_w_bio = tot_row_count - 2
 
+	#loop over each person
 	for i in range(num_rows_w_bio):
 		row_num = i + 2
 		name = get_name(row_num)
