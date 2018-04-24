@@ -45,11 +45,15 @@ def get_bio(index):
 	#browser.implicitly_wait(10) #wait a bit for the data to populate
 
 	#now get the bio (check to see if there's an image or not)
-	if len(browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[2]')[0].text) >0:
-		bio_element = browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[2]')
-	else:
-		bio_element = browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[4]')
-	bio = bio_element[0].text
+	try:
+		if len(browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[2]')[0].text) >0:
+			bio_element = browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[2]')
+		else:
+			bio_element = browser.find_elements_by_xpath('//*[@id="main_container"]/div[3]/div/div/div/div[3]/div[2]/p[4]')
+		bio = bio_element[0].text
+	except:
+		bio = ''
+	
 
 	return [bio,person_link_url]
 
@@ -88,7 +92,7 @@ for j in range(pages):
 
 		#go back
 		browser.back()
-		#time.sleep(5)
+		time.sleep(1)
 
 
 df.to_csv(path_or_buf = "~/Dropbox/ideas/lincoln-brigade/01-data/raw-brigades-data.csv", encoding = 'utf-8',index = False)
