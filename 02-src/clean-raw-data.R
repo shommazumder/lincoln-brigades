@@ -62,5 +62,21 @@ get_last_name <- function(x){
 df$namefrst <- unlist(lapply(df$name,get_first_name)) #get first name
 df$namelast <- unlist(lapply(df$name,get_last_name)) #get last name
 
+# function to estimate state of residence
+get_state <- function(x){
+  strings_with_states <- sapply(state.name, grepl, x=strsplit(x, ";")[[1]])
+  if(!is.null(ncol(strings_with_states))){
+    potential_states <- colSums(strings_with_states > 0)
+    estimated_states <- names(which(potential_states > 0))
+  }else{
+    potential_states <- which(strings_with_states == T)
+    estimated_states <- names(potential_states)
+  }
+  return(estimated_states[1])
+}
+
+df$statename <- unlist(lapply(df$bio,get_state)) #get state of residence
+
 #output csv
 write_csv(x = df,path = "01-data/cleaned-brigades-data.csv")
+
