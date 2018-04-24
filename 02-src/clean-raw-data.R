@@ -61,3 +61,6 @@ get_last_name <- function(x){
 # apply name functions
 df$namefrst <- unlist(lapply(df$name,get_first_name)) #get first name
 df$namelast <- unlist(lapply(df$name,get_last_name)) #get last name
+
+#output csv
+write_csv(x = df,path = "01-data/cleaned-brigades-data.csv")
